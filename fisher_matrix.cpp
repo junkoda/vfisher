@@ -447,7 +447,7 @@ int main(int argc, char* argv[])
     ("sigmav", value<double>()->default_value(6000.0, "6000"), "uniform velocity error [km/s] for noise=uniform")
     ("steradian", value<string>()->default_value("4pi"), "field of view")
     ("verr", value<double>()->default_value(0.2, "0.2"), "fractional error in peculiar velocity for noise=uniform_ngal or nz")
-    ("pk", value<string>()->default_value("camb"), "power pectra camb, spt, or rpt2")
+    ("pk", value<string>()->default_value("camb"), "power pectra camb, spt, or rpt")
     ("kmax", value<double>()->default_value(0.3, "0.3"), "kmax [h Mpc^-1]")
     ("zmax", value<double>()->default_value(0.1, "0.1"), "zmax")
     ("nrbin", value<int>()->default_value(200), "number of volume bins for noise=unifrom or uniform_ngal")
@@ -522,8 +522,7 @@ int main(int argc, char* argv[])
   if(power_spectrum == "camb") {
     printf("# power_spectrum camb (linear)\n");
     string filebase= pk_dir + "/linear/camb";
-    //const char filebase[]="/Users/jkoda/Research/svn/projects/peculiar_velocity_fisher/work/derivative/linear/camb";
-    //const char filebase[]="/nfs/cluster/blake/jkoda/data/vfisher/power_spectrum/linear/camb";
+
     pdd= power_spectrum_camb(kmax, filebase.c_str());
     pdt= pdd;
     ptt= pdd;
@@ -539,7 +538,7 @@ int main(int argc, char* argv[])
     string filebase_tt= pk_dir + "/3pt/pkt/camb";
     ptt= power_spectrum_camb(kmax, filebase_tt.c_str());
   }
-  else if(power_spectrum == "rpt2") {
+  else if(power_spectrum == "rpt") {
     printf("# power_spectrum rpt\n");
     string filebase_dd= pk_dir + "/rpt/pdd/camb";
     pdd= power_spectrum_camb(kmax, filebase_dd.c_str());
@@ -547,7 +546,7 @@ int main(int argc, char* argv[])
     string filebase_dt= pk_dir + "/rpt/pdt/camb";
     pdt= power_spectrum_camb(kmax, filebase_dt.c_str());
 
-    string filebase_tt= pk_dir + "rpt/ptt/camb";
+    string filebase_tt= pk_dir + "/rpt/ptt/camb";
     ptt= power_spectrum_camb(kmax, filebase_tt.c_str());
   }
   else {

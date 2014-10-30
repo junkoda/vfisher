@@ -2,16 +2,16 @@
 # Fisher matrix code for peculiar velocity surveys
 #
 
-WOPT      ?= -Wall
-CXXFLAGS  := -O3 $(WOPT) -Wall
-LIBS      := -lm -lboost_program_options-mt -lgsl -lgslcblas
+CXXFLAGS  := -O3 -Wall
+LIBS      := -lm -lboost_program_options -lgsl -lgslcblas
+
+# In some environment BOOST library name is -lboost_program_options-mt
 
 # Location of libraries BOOST/program_options and GSL
 # /include and /lib are added below
 
 BOOST_DIR ?= #e.g. /opt/local 
 GSL_DIR   ?= #e.g. $(HOME)/Research/opt/gcc/gsl
-
 DIR_PATH   = $(BOOST_DIR) $(GSL_DIR)
 
 CXXFLAGS  += $(foreach dir, $(DIR_PATH), -I$(dir)/include)
