@@ -630,6 +630,7 @@ int main(int argc, char* argv[])
 
   if(vm.count("planck-prior")) {
     const string prior_filename= vm["planck-prior"].as<string>();
+    printf("# planck prior file %s\n", prior_filename.c_str());
     read_prior(prior_filename.c_str(), nparam, fij);
   }
 

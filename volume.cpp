@@ -114,6 +114,7 @@ std::vector<Volume>* nz_list(const char filename[], const double verr_fraction)
   float z, r, dvol, n1, n2;
 
   while(fgets(buf, 127, fp)) {
+    if(buf[0] == '#') continue;
     int ret= sscanf(buf, "%e %e %e %e %e", &z, &r, &dvol, &n1, &n2);
 
 
