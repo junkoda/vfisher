@@ -437,7 +437,7 @@ int main(int argc, char* argv[])
   //
   // program_options
   //
-  options_description opt("fisher_matrix3 [options] mode");
+  options_description opt("vfisher [options] mode");
   opt.add_options()
     ("help,h", "display this help")
     ("mode", "k, z, dk, matrix, final")
