@@ -2,6 +2,7 @@
 # Fisher matrix code for peculiar velocity surveys
 #
 
+#CXX        = g++ # set C++ compiler if necessary
 CXXFLAGS  := -O3 -Wall
 LIBS      := -lm -lboost_program_options -lgsl -lgslcblas
 
